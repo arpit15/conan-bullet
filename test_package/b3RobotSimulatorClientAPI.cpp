@@ -13,7 +13,6 @@
 #endif  //PHYSICS_TCP
 
 #include "PhysicsDirectC_API.h"
-#include "/home/arpit/bullet3-2.87/examples/SharedMemory/PhysicsDirect.h"
 
 #include "SharedMemoryInProcessPhysicsC_API.h"
 
