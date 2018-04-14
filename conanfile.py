@@ -66,7 +66,7 @@ class BulletConan(ConanFile):
         cmake.definitions["BUILD_CPU_DEMOS"] = False
         cmake.definitions["BUILD_OPENGL3_DEMOS"] = False
         cmake.definitions["BUILD_BULLET2_DEMOS"] = False
-        cmake.definitions["BUILD_EXTRAS"] = False
+        cmake.definitions["BUILD_EXTRAS"] = True
         cmake.definitions["BUILD_UNIT_TESTS"] = False
         if self.settings.compiler == "Visual Studio":
             cmake.definitions["USE_MSVC_RUNTIME_LIBRARY_DLL"] = "MD" in self.settings.compiler.runtime
@@ -95,6 +95,12 @@ class BulletConan(ConanFile):
             "BulletSoftBody",
             "Bullet3Common",
             "BulletInverseDynamics",
+            "BulletRobotics",
+            "pthread",
+            "dl",
+            "BulletInverseDynamicsUtils",
+            "BulletWorldImporter",
+            "BulletFileLoader"
         ]
         if self.settings.os == "Windows" and self.settings.build_type == "Debug":
             libs = [lib + "_Debug" for lib in libs]

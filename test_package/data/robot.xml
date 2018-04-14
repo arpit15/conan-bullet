@@ -1,0 +1,35 @@
+<mujoco model="robot">
+	<compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+  	<option integrator="RK4" timestep="0.002"/>
+  	<worldbody>
+    	  	
+    	<!-- robot model -->
+    	<body name="robot" pos="0 0 0.01">
+    		<geom name="base" type="cylinder" size="0.05 0.01" rgba="0.0 1.0 0.0 1" pos="0 0 0" friction="10 0.1 0.1"/>
+    		<!-- sliding joints in the plane to model omnidirectional motion -->
+    		<joint axis="1 0 0" name="robot_x" pos="0 0 0" type="slide"/>
+            <joint axis="0 1 0" name="robot_y" pos="0 0 0" type="slide"/>
+            <joint axis="0 0 1" name="robot_turn" pos="0 0 0" type="hinge"/>
+		
+			<!-- kick mechanical model -->
+			<body name="kick" pos="0 0 0.035">
+				<geom type="box" size="0.05 0.01 0.02" rgba="0.0 1.0 0.0 1" pos="0 0 0"/>
+				<joint name="kick" type="slide" pos="0 0 0" axis="0 1 0" range="-0.05 0.05" limited="true"/>
+				<inertial pos="0 0 0" mass="1"/>
+			</body>
+
+			<!-- Dribbler mechanical model -->
+			<body name="dribbler" pos="0 0.05 0.1" quat="1 0 1 0">
+				<geom type="cylinder" size="0.02 0.05" rgba="0.0 1.0 0.0 1" pos="0 0 0" friction="10 0.1 0.1"/>
+				<joint name="dribbler" type="hinge" pos="0 0 0" axis="0 0 1"/>
+				<inertial pos="0 0 0" mass="10"/>
+			</body>
+
+			<inertial pos="0 0 0" mass="100"/>
+
+    	</body>
+
+		
+
+	</worldbody>
+</mujoco>
